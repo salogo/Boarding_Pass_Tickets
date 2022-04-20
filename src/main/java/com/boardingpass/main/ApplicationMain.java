@@ -1,4 +1,4 @@
-package com.boardingpass.main;
+package main.java.com.boardingpass.main;
 
 public class ApplicationMain {
     //All the user Input goes here....

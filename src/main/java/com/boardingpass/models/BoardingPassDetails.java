@@ -1,4 +1,4 @@
-package com.boardingpass.models;
+package main.java.com.boardingpass.models;
 
 public class BoardingPassDetails {
     //The BoardingPass File details will be here
