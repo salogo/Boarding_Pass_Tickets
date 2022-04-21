@@ -20,11 +20,11 @@ public class BoardingPassDetails {
     private String destination;
     private String eta;
     private String departureTime;
-    private double totalPrice;
+    private double ticketPrice;
 
     //POJO class create getters and setters here...and zero parametized constructor
 
-    public BoardingPassDetails(String firstName, String lastName, String email, String phoneNumber, String gender, String age, String boardingPassNumber, String date, String origin, String destination, String eta, String departureTime, double totalPrice) {
+    public BoardingPassDetails(String firstName, String lastName, String email, String phoneNumber, String gender, String age, String boardingPassNumber, String date, String origin, String destination, String eta, String departureTime, double ticketPrice) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -37,9 +37,9 @@ public class BoardingPassDetails {
         this.destination = destination;
         this.eta = eta;
         this.departureTime = departureTime;
-        this.totalPrice = totalPrice;
+        this.ticketPrice = ticketPrice;
     }
- 
+
     public BoardingPassDetails(){
 
     }
@@ -140,12 +140,12 @@ public class BoardingPassDetails {
         this.departureTime = departureTime;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getTicketPrice() {
+        return ticketPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
 }
