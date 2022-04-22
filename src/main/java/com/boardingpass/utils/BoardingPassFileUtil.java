@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //to do
@@ -89,16 +91,27 @@ public class BoardingPassFileUtil {
         return fileRow;
     }
 
-    public void addOneRow(String[] inputData){
+    //for this method call you need to provide the users data (name, age, etc..) as a String array
+    //then the chosen row from the business file
+    public void addOneRow(String[] inputData, int chosenRow){
         //W.I.P
         //need to add inputData + boardingPassNumber + info from BusinessLogic file into one array or list
         //then write that list to row
         try{
-            FileWriter fileWriter = new FileWriter(file);
+            BusinessLogicFileUtil businessFile = new BusinessLogicFileUtil();
+
+            ArrayList<String> finalString = new ArrayList<>();
+
+            FileWriter fileWriter = new FileWriter(file, true);
             CSVWriter csvWriter = new CSVWriter(fileWriter);
 
+            finalString.add(String.valueOf(boardingPassNumber));
+            boardingPassNumber++;
+            finalString.addAll(Arrays.asList(inputData));
+            finalString.addAll(List.of(businessFile.getFilteredRow(chosenRow)));
+
             if(getFirstRow() == null){
-                csvWriter.writeNext(inputData);
+                csvWriter.writeNext(finalString.toArray(String[]::new));
             }
             fileWriter.close();
             csvWriter.close();
