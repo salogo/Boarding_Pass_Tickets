@@ -155,7 +155,7 @@ public class ApplicationMain {
         } while (bp.getDestination().matches("[a-zA-Z]+"));
 
         String firstName = bp.getFirstName();
-        String lastName = bp.getFirstName();
+        String lastName = bp.getLastName();
         int phoneNumber = Integer.parseInt(bp.getPhoneNumber());
         String emailAddress = bp.getEmail();
         String gender = bp.getGender();
