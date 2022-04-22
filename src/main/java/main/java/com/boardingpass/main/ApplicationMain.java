@@ -154,12 +154,15 @@ public class ApplicationMain {
             }
         } while (bp.getDestination().matches("[a-zA-Z]+"));
 
-        System.out.println(bp.getFirstName());
-        System.out.println(bp.getLastName());
-        System.out.println(bp.getPhoneNumber());
-        System.out.println(bp.getEmail());
-        System.out.println(bp.getGender());
-        System.out.println(bp.getAge());
-        System.out.println(bp.getDestination());
+        String firstName = bp.getFirstName();
+        String lastName = bp.getFirstName();
+        int phoneNumber = Integer.parseInt(bp.getPhoneNumber());
+        String emailAddress = bp.getEmail();
+        String gender = bp.getGender();
+        int age = Integer.parseInt(bp.getAge());
+        String destination = bp.getDestination();
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%20s\n", "First Name","Last Name","Phone Number","Email Address","Gender", "Age","Destination");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%20s\n", firstName,lastName,phoneNumber,emailAddress,gender, age,destination);
+
     }
 }
