@@ -15,7 +15,7 @@ import java.util.List;
 //better print out to mention file location for error catching
 
 public class BoardingPassFileUtil {
-    private final File file = new File("resources/BoardingPass.csv");
+    private final File file = new File("src/main/resources/Destinations.csv");
     private String[] fileRow;
     private int boardingPassNumber = 10000;
 

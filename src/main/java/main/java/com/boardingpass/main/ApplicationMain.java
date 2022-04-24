@@ -1,6 +1,7 @@
 package main.java.com.boardingpass.main;
 
 import com.boardingpass.models.BoardingPassDetails;
+import com.boardingpass.utils.BoardingPassFileUtil;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -140,7 +141,6 @@ public class ApplicationMain {
         System.out.println("47- Washington");
         System.out.println("48- West Virginia");
         System.out.println("49- Wisconsin");
-        System.out.println("50- Wyoming");
 
         do {
             try {
@@ -156,13 +156,71 @@ public class ApplicationMain {
 
         String firstName = bp.getFirstName();
         String lastName = bp.getLastName();
-        int phoneNumber = Integer.parseInt(bp.getPhoneNumber());
+        String phoneNumber = bp.getPhoneNumber();
         String emailAddress = bp.getEmail();
         String gender = bp.getGender();
         int age = Integer.parseInt(bp.getAge());
         String destination = bp.getDestination();
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%20s\n", "First Name","Last Name","Phone Number","Email Address","Gender", "Age","Destination");
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%20s\n", firstName,lastName,phoneNumber,emailAddress,gender, age,destination);
+        BoardingPassFileUtil bpf = new BoardingPassFileUtil();
+        String[] departureDetails = bpf.getSpecificRow(Integer.parseInt(bp.getDestination()));
+        bp.setDestination(departureDetails[1]);
+        bp.setEta(departureDetails[3]);
+        bp.setDepartureTime(departureDetails[2]);
+        int ticketPrice = getTicketPrice(Integer.parseInt(departureDetails[4]), Integer.parseInt(bp.getAge()),
+                bp.getGender());
+        bp.setTicketPrice(ticketPrice);
+        Long boardingPassNumber = (long) (Math.random() * Math.pow(10, 10));
+        bp.setBoardingPassNumber(boardingPassNumber.toString());
+        printTicket(bp);
+    }
+    /**
+     * Getting the ticket price
+     *
+     * @param price
+     * @param age
+     * @param gender
+     * @return
+     */
+    private static int getTicketPrice(int price, int age, String gender) {
+        int ticketPrice = price;
+        if (age <= 12) {
+            ticketPrice = price - (price / 2);
+        }
+        if (age >= 60) {
+            ticketPrice = price - ((price) * (60 / 100));
+        }
+        if (gender.equals("F")) {
+            ticketPrice = price - (price / 4);
+        }
+        return ticketPrice;
+
+    }
+    /**
+     * Printing the ticket price
+     *
+     * @param bp
+     */
+    private static void printTicket(BoardingPassDetails bp) {
+
+        String line = "------------------------------------------------------";
+        String airline = "American Airlines";
+        String id = "10-10-232";
+        String origin = "USA";
+        String flightNumber = "7869";
+        System.out.println("✈");
+
+        String info = " " + line
+                + String.format("%n %1s %18s %15s  %n", "Name:" + bp.getFirstName() + " " + bp.getLastName(),
+                "Ticket No. " + bp.getBoardingPassNumber(), "Airline: " + airline, "")
+                + " " + line + "\n"
+                + String.format(" %1s %25s %20s %n %1s  %n %54s ", "ID: " + id,
+                origin + " \u2708 " + bp.getDestination(), "", "Flight No. " + flightNumber, "", "")
+                + String.format("%n %1s %27s %20s %n %38s %15s", "║█║▌║█║▌│║▌█║▌║", "ETA: " + bp.getEta(), "",
+                "Departure: " + bp.getDepartureTime(), "")
+                + "\n " + line;
+        System.out.println(info);
 
     }
 }
