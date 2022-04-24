@@ -101,46 +101,45 @@ public class ApplicationMain {
         System.out.println("7- Connecticut");
         System.out.println("8- Delaware");
         System.out.println("9- Florida");
-        System.out.println("10- Georgia");
-        System.out.println("11- Hawaii");
-        System.out.println("12- Idaho");
-        System.out.println("13- Illinois");
-        System.out.println("14- Indiana");
-        System.out.println("15- Iowa");
-        System.out.println("16- Kansas");
-        System.out.println("17- Kentucky");
-        System.out.println("18- Louisiana");
-        System.out.println("19- Maine");
-        System.out.println("20- Maryland");
-        System.out.println("21- Massachusetts");
-        System.out.println("22- Michigan");
-        System.out.println("23- Minnesota");
-        System.out.println("24- Mississippi");
-        System.out.println("25- Missouri");
-        System.out.println("26- Montana");
-        System.out.println("27- Nebraska");
-        System.out.println("28- Nevada");
-        System.out.println("29- New Hampshire");
-        System.out.println("30- New Jersey");
-        System.out.println("31- New Mexico");
-        System.out.println("32- New York");
-        System.out.println("33- North Carolina");
-        System.out.println("34- North Dakota");
-        System.out.println("35- Ohio");
-        System.out.println("36- Oklahoma");
-        System.out.println("37- Oregon");
-        System.out.println("38- Pennsylvania");
-        System.out.println("39- Rhode Island");
-        System.out.println("40- South Carolina");
-        System.out.println("41- South Dakota");
-        System.out.println("42- Tennessee");
-        System.out.println("43- Texas");
-        System.out.println("44- Utah");
-        System.out.println("45- Vermont");
-        System.out.println("46- Virginia");
-        System.out.println("47- Washington");
-        System.out.println("48- West Virginia");
-        System.out.println("49- Wisconsin");
+        System.out.println("10- Hawaii");
+        System.out.println("11- Idaho");
+        System.out.println("12- Illinois");
+        System.out.println("13- Indiana");
+        System.out.println("14- Iowa");
+        System.out.println("15- Kansas");
+        System.out.println("16- Kentucky");
+        System.out.println("17- Louisiana");
+        System.out.println("18- Maine");
+        System.out.println("19- Maryland");
+        System.out.println("20- Massachusetts");
+        System.out.println("21- Michigan");
+        System.out.println("22- Minnesota");
+        System.out.println("23- Mississippi");
+        System.out.println("24- Missouri");
+        System.out.println("25- Montana");
+        System.out.println("26- Nebraska");
+        System.out.println("27- Nevada");
+        System.out.println("28- New Hampshire");
+        System.out.println("29- New Jersey");
+        System.out.println("30- New Mexico");
+        System.out.println("31- New York");
+        System.out.println("32- North Carolina");
+        System.out.println("33- North Dakota");
+        System.out.println("34- Ohio");
+        System.out.println("35- Oklahoma");
+        System.out.println("36- Oregon");
+        System.out.println("37- Pennsylvania");
+        System.out.println("38- Rhode Island");
+        System.out.println("39- South Carolina");
+        System.out.println("40- South Dakota");
+        System.out.println("41- Tennessee");
+        System.out.println("42- Texas");
+        System.out.println("43- Utah");
+        System.out.println("44- Vermont");
+        System.out.println("45- Virginia");
+        System.out.println("46- Washington");
+        System.out.println("47- West Virginia");
+        System.out.println("48- Wisconsin");
 
         do {
             try {
@@ -161,8 +160,6 @@ public class ApplicationMain {
         String gender = bp.getGender();
         int age = Integer.parseInt(bp.getAge());
         String destination = bp.getDestination();
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%20s\n", "First Name","Last Name","Phone Number","Email Address","Gender", "Age","Destination");
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%20s\n", firstName,lastName,phoneNumber,emailAddress,gender, age,destination);
         BoardingPassFileUtil bpf = new BoardingPassFileUtil();
         String[] departureDetails = bpf.getSpecificRow(Integer.parseInt(bp.getDestination()));
         bp.setDestination(departureDetails[1]);
@@ -207,7 +204,7 @@ public class ApplicationMain {
         String line = "------------------------------------------------------";
         String airline = "American Airlines";
         String id = "10-10-232";
-        String origin = "USA";
+        String origin = "Atlanta";
         String flightNumber = "7869";
         System.out.println("✈");
 
@@ -218,7 +215,7 @@ public class ApplicationMain {
                 + String.format(" %1s %25s %20s %n %1s  %n %54s ", "ID: " + id,
                 origin + " \u2708 " + bp.getDestination(), "", "Flight No. " + flightNumber, "", "")
                 + String.format("%n %1s %27s %20s %n %38s %15s", "║█║▌║█║▌│║▌█║▌║", "ETA: " + bp.getEta(), "",
-                "Departure: " + bp.getDepartureTime(), "")
+                "Departure: " + bp.getDepartureTime(), "" + "Ticket Price : " + "$"+bp.getTicketPrice())
                 + "\n " + line;
         System.out.println(info);
 
